@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="changebg.js"></script>
+  <link rel="icon" href="\icons\icon16.png" type="image/png">
+  <!-- Google Fonts Pre Connect -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts Links (Roboto 400, 500 and 700 included) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Azeret+Mono&family=Bitter:wght@200;400;500;600;900&family=Calistoga&family=Eczar&family=Karla:wght@800&family=Lilita+One&family=Major+Mono+Display&family=Rubik+Mono+One&family=Space+Mono:wght@700&family=VT323&family=Xanh+Mono&display=swap" rel="stylesheet">
+  <!-- CSS Files Links -->
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Title -->
+  <title>New Tab</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;800;900&display=swap);
+    @import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@100;200;300;400;500;600;800;900&display=swap);
+    @import url(https://fonts.googleapis.com/css2?family=Pacifico&display=swap);
+    @import url(https://fonts.googleapis.com/css2?family=Secular+One&display=swap);
+    
+      
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      margin:0;
+      background-color: transparent;
+      padding: 0px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    
+    .clock {
+    position: absolute;
+    /*top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); */
+    color: #778DA9;
+   
+    margin: 1%;
+   
+}
+#timedatesq{
+  border: 3px solid #778DA9;
+  background:rgba(255,255,255,0.5);
+}
+
+#timedatesq hr{
+  border: 1px solid #778DA9;
+  margin: 0px 7px -5px 7px;
+}
+
+#secondclock{
+    border: 0px solid orange;
+    font-size: 60px;
+    font-family: 'Karla';
+    letter-spacing: 7px;
+    padding-top: 0px;
+    padding-right:15px;
+    padding-left: 15px;
+    padding-bottom: 0px;
+    text-transform:none;
+    text-align: center;
+    margin-bottom: -5px;
+}
+
+#date{
+  font-family: 'Pacifico';
+  font-size: 1.6em;
+  margin: 5px;
+  border: 0px solid pink;
+  text-align: center; 
+  text-transform: lowercase;
+  color:#3e5c76;
+}
+
+#clockwrapper:hover #MyClockDisplay{
+    margin-left: 15px;
+    transition: all 2s;
+}
+
+#clockwrapper #MyClockDisplay{
+    transition: all 2s;
+    border: 0px solid green;
+}
+
+#MyClockDisplay{
+    font-family: "Space Mono";
+    font-size: 120%;
+    margin-left: -190px;
+    margin-top: 130px;
+    
+}
+
+    /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 0.2px solid rgba(0, 0, 0,0.2);
+  background-color: rgba(0, 0, 0,0.7);
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 7px 16px;
+  transition: 0.3s;
+  font-size: 0.75em;
+  font-family: 'Bitter', monospace;
+  font-weight: 800;
+  color: #696d7d;
+  
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: rgba(240, 240, 240, 0.5);
+  color: black;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: rgba(204, 204, 204, 0.5);
+  color: black;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.links{
+    display: flex;
+    border: 0px solid black;
+    flex-direction: row;
+    justify-content: center;
+}
+.links a {
+  color: #586f6b;
+  font-size: 0.9em;
+  font-family: "Secular One";
+  font-weight: 600;
+  padding: 0px 10%;
+  text-decoration: none;
+}
+.links a:hover {
+  text-decoration: none;
+}
+
+.links a span:hover{
+  color: white;
+  text-decoration: none;
+  
+}
+.links a img {
+    width: 50px;
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+    
+}
+
+.links a:hover span {
+color: #0d1321;
+}
+
+.links a span {
+display: block;
+text-align: center;
+transition: all 1s;
+}
+
+#linkwrapper{
+  position:fixed;
+  top: 30%;
+}
+
+.tabflexwrap{
+  display: flex;
+  justify-content:center;
+}
+
+iframe{
+  border: 0px solid transparent;
+  background-color: black;
+  height: 500px;
+}
+.widgframe {
+  border-color:transparent;
+  border-image: none;
+  border-radius: 14px;
+  border-style: solid;
+  border-width: 2px;
+  height: 440px;
+  overflow: hidden;
+}
+
+#kairo{
+  margin-top:-30px;
+  
+}
+  </style>
+ </head>
+ <body>
+  <header>
+   <!-- <h1>HTML5 Template</h1> -->
+   <div id="clockwrapper">
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    <div class="clock" id="timedatesq">
+     <div id="secondclock"></div>
+     <hr>
+     <div id="date"></div>
+    </div>
+   </div>
+  </header>
+  <main>
+   <!--<p>This is a simple HTML5 Template</p> --></main>
+  <footer>
+   <!--<p>HTML5 Template</p> --></footer>
+  <div class="tab">
+   <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen">main</button>
+   <button class="tablinks" onclick="openCity(event, 'tab2')">notes</button>
+   <button class="tablinks" onclick="openCity(event, 'tab3')">widgets</button>
+  </div>
+  <div id="tab1" class="tabcontent">
+   <div class="tabflexwrap">
+    <!--<h3>London</h3> -->
+    <!--<p>London is the capital city of England.</p> -->
+    <div id="linkwrapper">
+     <div id="mainlinks" class="links">
+      <a href="https://mail.google.com/mail/u/0/" title="gmail">
+       <img src="https://cdn-icons-png.flaticon.com/512/2514/2514465.png" title="gmail">
+       <span>gmail</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/u/0/" title="sheets">
+       <img src="https://cdn-icons-png.flaticon.com/512/1011/1011550.png" title="sheets">
+       <span>sheets</span>
+      </a>
+      <a href="https://drive.google.com/drive/my-drive" title="drive">
+       <img src="https://cdn-icons-png.flaticon.com/512/324/324107.png" title="drive">
+       <span>drive</span>
+      </a>
+      <a href="https://calendar.google.com/calendar/u/0/r" title="calendar">
+       <img src="https://cdn-icons-png.flaticon.com/512/3120/3120708.png" title="calendar">
+       <span>calendar</span>
+      </a>
+      <a href="https://www.amazon.com/" title="amazon">
+       <img src="amazon.png" title="amazon">
+       <span>amazon</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="tab2" class="tabcontent">
+   <div class="tabflexwrap">
+    <!-- <h3>Paris</h3>-->
+    <!-- <p>Paris is the capital of France.</p>-->
+    <div style="position:fixed; top:20%;">
+     <h1>notepad</h1>
+     hello, there's nothing here just yet! stay tuned
+    </div>
+   </div>
+  </div>
+  <div id="tab3" class="tabcontent">
+   <div class="tabflexwrap">
+    <div style="position: fixed; top: 20%;">
+     <h2>widgets</h2>
+     <h3>(more to come!)</h3>
+     <!-- <p>Tokyo is the capital of Japan.</p> -->
+     <div class="widgframe">
+      <iframe src="https://getkairo.com/embed-local?id=df6b054d-519d-4c47-8fd2-1b7d2303cfb0&local=true&title=work&type=Block&color=bluegray&size=3.5&faceType=humanbear" id="kairo"></iframe>
+     </div>
+    </div>
+   </div>
+  </div>
+  <noscript>Your browser doesn't support JavaScript!</noscript>
+  <script src="js\tabs.js"></script>
+  <script src="js\datetime.js"></script>
+ </body>
+</html>
