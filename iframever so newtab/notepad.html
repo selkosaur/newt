@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/817/817757.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=B612 Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lilita One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kavoon" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Azeret+Mono&family=Calistoga&family=Eczar&family=Lilita+One&family=Major+Mono+Display&family=Rubik+Mono+One&family=Source+Sans+Pro&family=Space+Mono:wght@700&family=VT323&family=Xanh+Mono&display=swap" rel="stylesheet">
+  <title>so</title>
+ </head>
+ <style>
+
+body {
+font-family: 'Alegreya', "B612 Mono", "Segoe UI", "Tacoma",sans-serif;
+background-color: rgba(0,0,0,0);
+}
+
+/*
+The scrollbars section
+*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* width of textarea scrollbar*/
+textarea::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;  
+  transition: all 1s;
+}
+
+textarea:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(219, 210, 205, 0.8);
+}
+
+/* Set the style for a textarea scrollbar thumb. */
+textarea::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(219, 210, 205, 0.5);
+}
+
+/* Set the style for a textarea scrollbar thumb. */
+textarea::-webkit-scrollbar-thumb:hover {
+    border-radius: 2px;
+    background-color: rgba(219, 210, 205, 1);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 15px;}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #84A98C; 
+}
+
+::selection {
+ color: white;
+  background: #d3acb4;
+}
+  
+html {
+  height: 100%;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: transparent;
+  padding: 0px;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  border: 3.5px solid transparent;
+  border-radius: 20px;
+}
+textarea {
+  width: 100%;
+  font-size: 0.9em;
+  padding: 0em;
+  border: 10px solid #f5eee3;
+  box-sizing: border-box;
+  resize: none;
+  font-family: 'Source Sans Pro','Eczar', 'Tacoma', sans-serif;
+  font-weight: 500;
+  transition: all 1s;
+  background: #f5eee3;
+  color: #52796F;
+  border-radius: 15px;
+  cursor: auto;
+}
+
+#title {
+    font-family: "Space Mono", Consolas, Courier, monospace;
+    flex-grow: 0;
+    background-color: #bfcfc9;
+    border: 10px solid #bfcfc9;
+    color: #354F52;
+    font-size: 1.5em;
+    
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    overflow: hidden;
+    padding-bottom: 0em;
+}
+
+#title::placeholder { /*to adjust the appearance of the placeholder text in the title*/
+  color:rgba(53, 79, 82,0.5);
+}
+
+#notepad{
+    flex-grow:1;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    margin-top: 3px;
+    padding: 0.5em;
+    padding-left: 0.1em;
+    color:#B97986;
+}
+#notepad::placeholder{
+font-style: italic;
+color: rgba(185, 121, 134, 0.7);
+
+}
+textarea:focus{
+  background: #f5eee3;
+border:#f5eee3 10px solid ;
+  outline:none;
+  color: #A14557;
+}
+
+#notepad:focus{
+  color: #A14557;
+}
+ </style>
+ <!--  
+    
+    
+main body html begins here
+
+
+-->
+ <body style="background: rgba(0,0,0,0)">
+  <div class="container">
+   <textarea
+    id="title"
+    placeholder="✎ title"
+    spellcheck="false"
+    rows="1"
+    data-min-rows="1"
+   ></textarea>
+   <textarea
+    id="notepad"
+    oninput="handleInput(event)"
+    placeholder="notes go here ..."
+    spellcheck="false"
+   ></textarea>
+  </div>
+  <script>
+    var d = document;
+
+// not using this at the moment but might do later for graceful degradation...
+function supports_html5_storage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
+d.addEventListener('DOMContentLoaded', function(){
+
+  var savedContent = localStorage.getItem("notepadcontent");
+  var savedTitle = localStorage.getItem("titlecontent");
+  if(savedContent != null || savedTitle != null){
+    d.getElementById("notepad").value = savedContent;
+    d.getElementById("title").value = savedTitle;
+  }
+ 
+ 
+ d.getElementById("notepad").onkeyup = function(){
+  var data = d.getElementById("notepad").value;  
+  var title = d.getElementById("title").value;  
+  localStorage.setItem("notepadcontent", data);
+  localStorage.setItem("titlecontent", title);
+  }
+   d.getElementById("title").onkeyup = function(){
+  var data = d.getElementById("notepad").value;  
+  var title = d.getElementById("title").value;  
+  localStorage.setItem("notepadcontent", data);
+  localStorage.setItem("titlecontent", title);
+  }
+});
+  </script>
+  <script>
+let previousLength = 0;
+
+const handleInput = (event) => {
+  const bullet = "\u2661";
+  const newLength = event.target.value.length;
+  const characterCode = event.target.value.substr(-1).charCodeAt(0);
+
+  if (newLength > previousLength) {
+    if (characterCode === 10) {
+      event.target.value = `${event.target.value}${bullet} `;
+    } else if (newLength === 1) {
+      event.target.value = `${bullet} ${event.target.value}`;
+    }
+  }
+  
+  previousLength = newLength;
+}
+  </script>
+  <script>
+    function getScrollHeight(elm){
+  var savedValue = elm.value
+  elm.value = ''
+  elm._baseScrollHeight = elm.scrollHeight
+  elm.value = savedValue
+}
+
+const textarea = document.getElementById("title");
+
+function setHeight(elem) {
+  const style = getComputedStyle(elem, null);
+  const verticalBorders = Math.round(parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth));
+  const maxHeight = parseFloat(style.maxHeight) || 300;
+  
+  elem.style.height = "auto";
+
+  const newHeight = elem.scrollHeight + verticalBorders;
+  
+  elem.style.overflowY = newHeight > maxHeight ? "auto" : "hidden";
+  elem.style.height = Math.min(newHeight, maxHeight) + "px";
+}
+
+textarea.addEventListener("input", (e) => {
+  setHeight(e.target);
+});
+
+setHeight(textarea);
+  </script>
+ </body>
+</html>
