@@ -210,7 +210,7 @@ transition: all 1s;
 
 iframe{
   border: 0px solid transparent;
-  background-color: black;
+  background-color: transparent;
   height: 500px;
 }
 .widgframe {
@@ -226,6 +226,10 @@ iframe{
 #kairo{
   margin-top:-30px;
   
+}
+iframe#notepad{
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 17px;
 }
   </style>
  </head>
@@ -260,20 +264,20 @@ iframe{
        <img src="https://cdn-icons-png.flaticon.com/512/2514/2514465.png" title="gmail">
        <span>gmail</span>
       </a>
-      <a href="https://docs.google.com/spreadsheets/u/0/" title="sheets" target="_parent">
+      <a href="https://docs.google.com/spreadsheets/u/0/" target="_parent" title="sheets">
        <img src="https://cdn-icons-png.flaticon.com/512/1011/1011550.png" title="sheets">
        <span>sheets</span>
       </a>
-      <a href="https://drive.google.com/drive/my-drive" title="drive" target="_parent">
+      <a href="https://drive.google.com/drive/my-drive" target="_parent" title="drive">
        <img src="https://cdn-icons-png.flaticon.com/512/324/324107.png" title="drive">
        <span>drive</span>
       </a>
-      <a href="https://calendar.google.com/calendar/u/0/r" title="calendar" target="_parent">
+      <a href="https://calendar.google.com/calendar/u/0/r" target="_parent" title="calendar">
        <img src="https://cdn-icons-png.flaticon.com/512/3120/3120708.png" title="calendar">
        <span>calendar</span>
       </a>
-      <a href="https://www.amazon.com/" title="amazon" target="_parent">
-       <img src="amazon.png" title="amazon">
+      <a href="https://www.amazon.com/" title="amazon">
+       <img src="amazon.png" target="_parent" title="amazon">
        <span>amazon</span>
       </a>
      </div>
@@ -286,7 +290,8 @@ iframe{
     <!-- <p>Paris is the capital of France.</p>-->
     <div style="position:fixed; top:20%;">
      <h1>notepad</h1>
-     hello, there's nothing here just yet! stay tuned
+     <p>still kind of a work in progress! stay tuned</p>
+     <iframe id="notepad" src="notepad.html"></iframe>
     </div>
    </div>
   </div>
