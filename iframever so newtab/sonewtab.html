@@ -221,16 +221,27 @@ iframe{
   border-width: 2px;
   height: 440px;
   overflow: hidden;
+  margin:  0 1vw;
 }
 
 #kairo{
   margin-top:-30px;
   
 }
+iframe.kairo{
+margin-top: -30px;
+
+}
 iframe#notepad{
   background: rgba(0, 0, 0, 0.4);
   border-radius: 17px;
   width:50vw;
+}
+
+.kairowrap{
+  display: flex;
+  flex-direction: row;
+
 }
   </style>
  </head>
@@ -302,8 +313,13 @@ iframe#notepad{
      <h2>widgets</h2>
      <h3>(more to come!)</h3>
      <!-- <p>Tokyo is the capital of Japan.</p> -->
-     <div class="widgframe">
-      <iframe src="https://getkairo.com/embed-local?id=df6b054d-519d-4c47-8fd2-1b7d2303cfb0&local=true&title=work&type=Block&color=bluegray&size=3.5&faceType=humanbear" id="kairo"></iframe>
+     <div class="kairowrap">
+      <div class="widgframe">
+       <iframe src="https://getkairo.com/embed-local?id=df6b054d-519d-4c47-8fd2-1b7d2303cfb0&local=true&title=work&type=Block&color=bluegray&size=3.5&faceType=humanbear" id="kairo" class="kairo"></iframe>
+      </div>
+      <div class="widgframe">
+       <iframe src="https://getkairo.com/embed-local?id=6d0cccb6-6e75-4a71-8157-0dccb4da3fa6&local=true&title=other%20activities&type=Block&color=indigo&size=3.5&faceType=humanbear" class="kairo"></iframe>
+      </div>
      </div>
     </div>
    </div>
