@@ -117,12 +117,12 @@ textarea {
     background-color: #bfcfc9;
     border: 10px solid #bfcfc9;
     color: #354F52;
-    font-size: 1.5em;
-    
+    font-size: 115%;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     overflow: hidden;
     padding-bottom: 0em;
+    min-height: 10%;
 }
 
 #title::placeholder { /*to adjust the appearance of the placeholder text in the title*/
@@ -193,9 +193,11 @@ d.addEventListener('DOMContentLoaded', function(){
 
   var savedContent = localStorage.getItem("notepadcontent");
   var savedTitle = localStorage.getItem("titlecontent");
+  var savedTitleHeight = localStorage.getItem("titleheight");
   if(savedContent != null || savedTitle != null){
     d.getElementById("notepad").value = savedContent;
     d.getElementById("title").value = savedTitle;
+    d.getElementById("title").style.height = savedTitleHeight;
   }
  
  
@@ -207,9 +209,11 @@ d.addEventListener('DOMContentLoaded', function(){
   }
    d.getElementById("title").onkeyup = function(){
   var data = d.getElementById("notepad").value;  
-  var title = d.getElementById("title").value;  
+  var title = d.getElementById("title").value; 
+  var titleheight = d.getElementById("title").style.height; 
   localStorage.setItem("notepadcontent", data);
   localStorage.setItem("titlecontent", title);
+  localStorage.setItem("titleheight",titleheight);
   }
 });
   </script>
